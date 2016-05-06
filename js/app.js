@@ -1,7 +1,7 @@
 /**
  * Created by kshah on 5/6/16.
  */
-var app = angular.module("groceryListApp", []);
+var app = angular.module("groceryListApp", ["ngRoute"]);
 
 app.controller ("appTitle", ["$scope", function ($scope) {
     $scope.title = "Grocery List";
