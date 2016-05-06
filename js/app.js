@@ -13,7 +13,7 @@ app.config (function ($routeProvider){
             templateUrl: "views/addItem.html",
             controller: "groceryList"
         })
-        .when("/addItem/:id", {
+        .when("/addItem/edit/:id", {
             templateUrl: "views/addItem.html",
             controller: "groceryList"
         })
@@ -36,6 +36,14 @@ app.service ("GroceryService", function () {
             {id: 7, completed: true, name: "pepper", date: "07/01/2016"},
             {id: 8, completed: true, name: "cheese", date: "08/01/2016"}
         ];
+
+        groceryService.findById = function (id) {
+            for (var item in groceryService.items) {
+                if(groceryService.items[item].id === id){
+                    return groceryService.items[item]; 
+                }
+            }
+        }
 
         groceryService.getNewId = function () {
             if(groceryService.newId){
