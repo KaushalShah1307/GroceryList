@@ -37,7 +37,21 @@ app.service ("GroceryService", function () {
             {id: 8, completed: true, name: "cheese", date: "08/01/2016"}
         ];
 
+        groceryService.getNewId = function () {
+            if(groceryService.newId){
+                    groceryService.newId++;
+                    return groceryService.newId;
+            }else{
+                var MaxId = _.max(groceryService.items, function (entry) {
+                    return entry.id;
+                    groceryService.newId = MaxId.id + 1;
+                    return groceryService.newId;
+                })
+            }
+        }
+
         groceryService.save = function (entry) {
+            entry.id = groceryService.getNewId(entry);
             groceryService.items.push(entry);
         }
 
@@ -51,13 +65,15 @@ app.controller ("appTitle", ["$scope", "GroceryService",function ($scope, Grocer
 app.controller ("groceryList", ["$scope", "$routeParams", "GroceryService", "$location", function ($scope, $routeParams, GroceryService, $location) {
 
     $scope.items = GroceryService.items;
-    $scope.groceryItem = {id:9, completed: true, name: "tortillas", date: new Date()};
+    $scope.groceryItem = {id:9, completed: true, name: "", date: new Date()};
     
     $scope.save = function () {
         GroceryService.save ($scope.groceryItem);
         $location.path("/");
     }
 
-        $scope.rp = "This is the parameter value: " +$routeParams.id;
+    console.log($scope.items);
+
+    $scope.rp = "This is the parameter value: " +$routeParams.id;
 
 }]);
