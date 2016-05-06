@@ -3,6 +3,21 @@
  */
 var app = angular.module("groceryListApp", ["ngRoute"]);
 
+app.config (function ($routeProvider){
+    $routeProvider
+        .when("/", {
+            templateUrl: "views/groceryList.html",
+            controller: "groceryList"
+        })
+        .when("/addItem", {
+            templateUrl: "views/addItem.html",
+            controller: "addItem"
+        })
+        .otherwise({
+            redirectTo: "/"
+        })
+});
+
 app.controller ("appTitle", ["$scope", function ($scope) {
     $scope.title = "Grocery List";
 }]);
