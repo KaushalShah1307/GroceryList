@@ -11,7 +11,11 @@ app.config (function ($routeProvider){
         })
         .when("/addItem", {
             templateUrl: "views/addItem.html",
-            controller: "addItem"
+            controller: "groceryList"
+        })
+        .when("/addItem/:id", {
+            templateUrl: "views/addItem.html",
+            controller: "groceryList"
         })
         .otherwise({
             redirectTo: "/"
@@ -22,7 +26,7 @@ app.controller ("appTitle", ["$scope", function ($scope) {
     $scope.title = "Grocery List";
 }]);
 
-app.controller ("groceryList", ["$scope", function ($scope) {
+app.controller ("groceryList", ["$scope", "$routeParams", function ($scope, $routeParams) {
     $scope.items = [
         {completed: true, name: "milk", date: "01/01/2016"},
         {completed: true, name: "butter", date: "02/01/2016"},
@@ -33,4 +37,7 @@ app.controller ("groceryList", ["$scope", function ($scope) {
         {completed: true, name: "pepper", date: "07/01/2016"},
         {completed: true, name: "cheese", date: "08/01/2016"}
     ];
+
+        $scope.rp = "This is the parameter value: " +$routeParams.id;
+
 }]);
