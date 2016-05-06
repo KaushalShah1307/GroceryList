@@ -33,7 +33,7 @@
 <div class="container" ng-controller="groceryList">
     <div class="col-xs-12">
         <ul class="list-group">
-            <li ng-repeat="item in items" class="list-group-item text-center clearfix">
+            <li ng-repeat="item in items | orderBy: 'date'" class="list-group-item text-center clearfix">
                 {{item.name}}
             </li>
         </ul>
