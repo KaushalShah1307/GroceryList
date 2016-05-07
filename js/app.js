@@ -106,3 +106,10 @@ app.controller ("groceryList", ["$scope", "$routeParams", "GroceryService", "$lo
     $scope.rp = "This is the parameter value: " +$routeParams.id;
 
 }]);
+
+app.directive("ksGroceryItems", function () {
+   return{
+       restrict: "E",
+       templateUrl: "views/groceryItems.html"
+   }
+});
