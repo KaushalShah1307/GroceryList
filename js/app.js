@@ -76,6 +76,7 @@ app.service ("GroceryService", function () {
 app.controller ("appTitle", ["$scope", "GroceryService",function ($scope, GroceryService) {
     $scope.title = "Grocery List";
     $scope.items = GroceryService.items;
+    
 }]);
 
 app.controller ("groceryList", ["$scope", "$routeParams", "GroceryService", "$location", function ($scope, $routeParams, GroceryService, $location) {
