@@ -96,6 +96,11 @@ app.controller ("appTitle", ["$scope", "GroceryService",function ($scope, Grocer
     $scope.markCompleted = function (entry) {
         GroceryService.markCompleted(entry);
     }
+
+    $scope.$watch(function () { return GroceryService.items;}, function (items) {
+        $scope.groceryItem = items;
+    });
+
 }]);
 
 app.controller ("groceryList", ["$scope", "$routeParams", "GroceryService", "$location", function ($scope, $routeParams, GroceryService, $location) {
