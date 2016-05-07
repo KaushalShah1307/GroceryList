@@ -1,4 +1,8 @@
-<span style="font-weight: bold">{{item.name | uppercase}}</span>
+<button type="button" class="btn btn-an btn-success pull-left" ng-click="markCompleted(item)">
+    <span class="glyphicon" ng-class="item.completed ? 'glyphicon-check' : 'glyphicon-unchecked'"></span>
+</button>
+
+<span ng-class="{strike:item.completed}" style="font-weight: bold">{{item.name | uppercase}}</span>
 
 <button type="button" class="btn btn-an btn-danger pull-right" ng-click="removeItem(item)">
     <span class="glyphicon glyphicon-trash"></span>

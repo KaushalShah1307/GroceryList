@@ -68,7 +68,11 @@ app.service ("GroceryService", function () {
                 entry.id = groceryService.getNewId(entry);
                 groceryService.items.push(entry);
             }
-        }
+        };
+
+        groceryService.markCompleted = function (entry) {
+            entry.completed = !entry.completed;
+        };
     
         groceryService.removeItem = function (entry) {
             var index = groceryService.items.indexOf(entry);
@@ -85,6 +89,10 @@ app.controller ("appTitle", ["$scope", "GroceryService",function ($scope, Grocer
 
     $scope.removeItem = function (entry) {
         GroceryService.removeItem(entry);
+    };
+
+    $scope.markCompleted = function (entry) {
+        GroceryService.markCompleted(entry);
     }
 }]);
 
