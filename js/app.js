@@ -101,7 +101,7 @@ app.controller ("groceryList", ["$scope", "$routeParams", "GroceryService", "$lo
     if(!$routeParams) {
         $scope.groceryItem = {id: 9, completed: false, name: "", date: new Date()};
     }else{
-        $scope.groceryItem = GroceryService.findById(parseInt($routeParams.id));
+        $scope.groceryItem = _.clone(GroceryService.findById(parseInt($routeParams.id)));
     }
 
     $scope.save = function () {
