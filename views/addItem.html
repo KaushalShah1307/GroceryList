@@ -4,9 +4,9 @@
         </div>
         <form name="groceryForm">
 
-            <p><b>Dirty:</b>{{groceryForm.$dirty}}</p>
-            <p><b>Pristine:</b>{{groceryForm.$pristine}}</p>
-            <p><b>Valid:</b>{{groceryForm.$valid}}</p>
+            <p style="visibility: hidden"><b>Dirty:</b>{{groceryForm.$dirty}}</p>
+            <p style="visibility: hidden"><b>Pristine:</b>{{groceryForm.$pristine}}</p>
+            <p style="visibility: hidden"><b>Valid:</b>{{groceryForm.$valid}}</p>
 
             <div class="alert alert-danger" ng-show="groceryForm.$dirty && !groceryForm.$valid" role="alert">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
