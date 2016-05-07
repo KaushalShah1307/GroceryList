@@ -22,20 +22,22 @@ app.config (function ($routeProvider){
         })
 });
 
-app.service ("GroceryService", function () {
+app.service ("GroceryService", function ($http) {
 
         var groceryService = {};
 
-        groceryService.items = [
-            {id: 1, completed: true, name: "milk", date: new Date("January 1, 2016 11:30:00")},
-            {id: 2, completed: true, name: "butter", date: new Date("February 1, 2016 11:30:00")},
-            {id: 3, completed: true, name: "bread", date: new Date("March 1, 2016 11:30:00")},
-            {id: 4, completed: true, name: "eggs", date: new Date("April 1, 2016 11:30:00")},
-            {id: 5, completed: true, name: "sugar", date: new Date("May 1, 2016 11:30:00")},
-            {id: 6, completed: true, name: "salt", date: new Date("June 1, 2016 11:30:00")},
-            {id: 7, completed: true, name: "pepper", date: new Date("July 1, 2016 11:30:00")},
-            {id: 8, completed: true, name: "cheese", date: new Date("August 1, 2016 11:30:00")}
-        ];
+        groceryService.items = [];
+
+        $http.get("data/server_data.json")
+            .success(function (data) {
+                groceryService.items = data;
+                for (var item in groceryService.items){
+                    groceryService.items[item].date = new Date(groceryService.items[item].date);
+                }
+            })
+            .error(function (data, status) {
+
+            });
 
         groceryService.findById = function (id) {
             for (var item in groceryService.items) {
